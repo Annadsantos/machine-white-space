@@ -1,0 +1,118 @@
+<!-- Criado por Marise Miranda | 2017.1 -->
+<!-- Adaptado por Matheus Matos | 2025.1 -->
+ 
+
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPTecher's Machine</title>
+    <link rel="stylesheet" href="machine.css">
+</head>
+
+<body>
+    <header>
+        <div>
+          <img class="imagem-logo" src="https://cdn2.steamgriddb.com/logo_thumb/74119562764bfb58423037ae2d67a4aa.png" alt="">
+        </div>
+    </header>
+      
+    <center>
+        <div class="agrupamento">
+            <img src="imagens/omori2.png" alt="omori esquerda" class="omori-esquerda">
+            
+        <div class="titulo">
+            <h1>welcome to<br>machine space.</h1>
+        </div>
+            
+        <img src="imagens/omori.png" alt="omori direita" class="omori-direita">
+        </div>
+
+        <div class="ajuste_input_botao">
+            <p class="base">Insira um valor e escolha uma base:</p>
+            <input id="input_valor" type="text" placeholder="Ex: 10">
+
+            <select id="select_base" class="yellowblack">
+                <option disabled selected>Escolha</option>
+                <option>Hexadecimal</option>
+                <option>Binário</option>
+                <option>Decimal</option>
+                <option>Octal</option>
+            </select>
+
+            <button class="botao" onclick="converter()">
+                <span class="converter-botao">CONVERTER</span>
+            </button>
+        </div>
+        <br>
+
+        <div class="resultados">
+        <h3>RESULTADOS</h3>
+        <p>
+        <div id="demo2"></div>
+        </p>
+        <p>
+        <div id="demo3"></div>
+        </p>
+        <p>
+        <div id="demo4"></div>
+        </p>
+        <div id="div_mensagem"></div>
+
+        </div>
+    </center>
+
+    <div class="imagem-fim">
+        <img src="https://i.redd.it/zox0vq06rxq81.png" alt="">
+    </div>
+
+    <script>
+        function converter() {
+            var numero = input_valor.value;
+            var base = select_base.value;
+    
+            var decimal = Number(numero);
+            var binario = parseInt(numero, 2);
+            var octal = parseInt(numero, 8);
+            var hexadecimal = parseInt(numero, 16);
+    
+            if (base == 'Decimal') {
+                demo2.innerHTML = `Octal: ` + decimal.toString(8);
+                demo3.innerHTML = `Hexadecimal: ` + decimal.toString(16).toUpperCase();
+                demo4.innerHTML = `Binário: ` + decimal.toString(2);
+    
+            } else if (base == 'Binário') {
+
+                if (numero.includes("2") || numero.includes("3") || numero.includes("4") ||
+                    numero.includes("5") || numero.includes("6") || numero.includes("7") ||
+                    numero.includes("8") || numero.includes("9")) {
+                    alert("Valor inválido! Binário só pode conter 0 e 1.");
+                    demo2.innerHTML = "";
+                    demo3.innerHTML = "";
+                    demo4.innerHTML = "";
+                    return;
+                } else {
+                demo2.innerHTML = "Octal: " + binario.toString(8);
+                demo3.innerHTML = "Hexadecimal: " + binario.toString(16).toUpperCase();
+                demo4.innerHTML = "Decimal: " + binario.toString(10);
+            }
+    
+            } else if (base == 'Octal') {
+                demo2.innerHTML = "Binário: " + octal.toString(2);
+                demo3.innerHTML = "Hexadecimal: " + octal.toString(16).toUpperCase();
+                demo4.innerHTML = "Decimal: " + octal.toString(10);
+    
+            } else if (base == 'Hexadecimal') {
+                demo2.innerHTML = "Binário: " + hexadecimal.toString(2);
+                demo3.innerHTML = "Octal: " + hexadecimal.toString(8);
+                demo4.innerHTML = "Decimal: " + hexadecimal.toString(10);
+            } else if (isNaN(base)) {
+            alert("Base indefinida. Escolha uma base!"); 
+        }
+
+        }
+    </script>
+</body>
+</html>
